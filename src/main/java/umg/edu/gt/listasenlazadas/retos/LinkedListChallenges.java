@@ -36,6 +36,7 @@ public final class LinkedListChallenges {
         } catch (UnsupportedOperationException ex) {
             System.out.println(ex.getMessage());
         }
+        
         System.out.println();
         System.out.println("Antes de clean: " + eventos);
 
@@ -43,6 +44,11 @@ public final class LinkedListChallenges {
 
         System.out.println("Eliminados: " + eliminados);
         System.out.println("Despues de clean: " + eventos);
+        
+
+eventos.reverseInPlace();
+
+System.out.println("Después: " + eventos);        
     }
 
 }

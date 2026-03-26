@@ -116,6 +116,25 @@ public class SinglyLinkedList<T> {
         return count;
     }
     
+    public void reverseInPlace() {
+        SimpleNode<T> prev = null;
+        SimpleNode<T> current = head;
+        SimpleNode<T> next = null;
+        
+        tail = head;
+        
+        while( current != null) {
+      	  
+      	 next = current.getNext();
+      	 current.setNext(prev);
+      	 prev = current;
+      	  current = next;
+      	  
+        }
+        head = prev;
+      	
+      }
+
     /**
      * RETO 2 (intermedio):
      * Limpia completamente la lista y retorna cuántos nodos fueron eliminados.
@@ -176,10 +195,6 @@ public class SinglyLinkedList<T> {
      * - Lista con un elemento.
      * - Lista con varios elementos.
      */
-    public void reverseInPlace() {
-        throw new UnsupportedOperationException(
-                "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList.");
-    }
 
     /**
      * RETO 4 (avanzado):
