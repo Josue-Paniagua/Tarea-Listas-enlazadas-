@@ -37,6 +37,12 @@ public final class LinkedListChallenges {
             System.out.println(ex.getMessage());
         }
         System.out.println();
+        System.out.println("Antes de clean: " + eventos);
+
+        int eliminados = eventos.clean();
+
+        System.out.println("Eliminados: " + eliminados);
+        System.out.println("Despues de clean: " + eventos);
     }
 
 }

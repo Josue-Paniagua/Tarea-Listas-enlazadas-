@@ -105,38 +105,106 @@ public class SinglyLinkedList<T> {
      * @return cantidad de ocurrencias encontradas
      */
     public int countOccurrences(T value) {
+        int count = 0;
+        SimpleNode<T> current = head;
+        while(current != null) {
+        	if(isSameValue(current.getValue(), value)) {
+        		count++;
+        	}
+        	current = current.getNext();
+        }
+        return count;
+    }
+    
+    /**
+     * RETO 2 (intermedio):
+     * Limpia completamente la lista y retorna cuántos nodos fueron eliminados.
+     *
+     * Objetivo pedagógico:
+     * - Entender cómo recorrer y "desconectar" nodos en una lista enlazada.
+     * - Reforzar invariantes de la estructura (head, tail, size).
+     *
+     * Reglas sugeridas:
+     * - No usar estructuras auxiliares.
+     * - Desconectar nodo por nodo (setNext(null)).
+     * - Al final: head == null, tail == null, size == 0.
+     *
+     * Casos de prueba sugeridos:
+     * - Lista vacía -> retorna 0.
+     * - Lista con 1 nodo -> retorna 1 y queda vacía.
+     * - Lista con n nodos -> retorna n y queda vacía.
+     *
+     * @return cantidad de nodos eliminados
+     */
+    public int clean() {
       int count = 0;
       SimpleNode<T> current = head;
-      	while(current!= null) {
-      		if (isSameValue(current.getValue(),value)) {
-      			count ++;
-      		}
-      		current = current.getNext();
-      	}
-            return count;
+      
+      while(current != null) {
+    	  
+    	  SimpleNode<T> next = current.getNext();
+    	  current.setNext(null);
+    	  current = next;
+    	  count++;
+    	  
+      }
+      head = null;
+      tail = null;
+      size = 0;
+      return count;
     }
-/**
- * reto 2
- * limpiar al lista
- */
-    public void clean () {
-    	tail = null;
-    	head = null;
-    	size = 0 ;
-    
-  
-    }
- /** 
- *  reto3
- *  invertir la lista
- */
+
     /**
- *  cambair el odel de la lsita por ejepmlo 2,4,5,6
- *  lsita inverdaida 6,5,4,3;
- *  
- *  reto 4
- *  eliminar duplciados 
- */
+     * RETO 3 (intermedio/avanzado):
+     * Invierte la lista en el mismo objeto (in-place).
+     *
+     * Ejemplo:
+     * Antes: [2, 4, 5, 6]
+     * Después: [6, 5, 4, 2]
+     *
+     * Objetivo pedagógico:
+     * - Dominar manipulación de punteros previous/current/next.
+     * - Actualizar correctamente head y tail.
+     *
+     * Reglas sugeridas:
+     * - No crear una nueva lista.
+     * - No usar recursión.
+     * - Complejidad esperada: O(n) tiempo, O(1) memoria extra.
+     *
+     * Casos de prueba sugeridos:
+     * - Lista vacía.
+     * - Lista con un elemento.
+     * - Lista con varios elementos.
+     */
+    public void reverseInPlace() {
+        throw new UnsupportedOperationException(
+                "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList.");
+    }
+
+    /**
+     * RETO 4 (avanzado):
+     * Elimina duplicados conservando la primera aparición de cada valor.
+     *
+     * Ejemplo:
+     * Antes: [A, B, A, C, B, D]
+     * Después: [A, B, C, D]
+     *
+     * Objetivo pedagógico:
+     * - Practicar recorridos anidados y eliminación interna de nodos.
+     * - Mantener consistencia de enlaces y tamaño tras cada eliminación.
+     *
+     * Reglas sugeridas:
+     * - No usar HashSet, Map, arreglos u otras estructuras auxiliares.
+     * - Resolver comparando nodos de forma manual.
+     * - Complejidad esperada sin auxiliares: O(n^2).
+     *
+     * @return cantidad de nodos eliminados por duplicados
+     */
+    public int removeDuplicates() {
+        throw new UnsupportedOperationException(
+                "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList.");
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("[");
