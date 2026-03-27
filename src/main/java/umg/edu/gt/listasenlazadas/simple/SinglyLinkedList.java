@@ -116,24 +116,6 @@ public class SinglyLinkedList<T> {
         return count;
     }
     
-    public void reverseInPlace() {
-        SimpleNode<T> prev = null;
-        SimpleNode<T> current = head;
-        SimpleNode<T> next = null;
-        
-        tail = head;
-        
-        while( current != null) {
-      	  
-      	 next = current.getNext();
-      	 current.setNext(prev);
-      	 prev = current;
-      	  current = next;
-      	  
-        }
-        head = prev;
-      	
-      }
 
     /**
      * RETO 2 (intermedio):
@@ -195,6 +177,26 @@ public class SinglyLinkedList<T> {
      * - Lista con un elemento.
      * - Lista con varios elementos.
      */
+    
+    public void reverseInPlace() {
+        SimpleNode<T> prev = null;
+        SimpleNode<T> current = head;
+        SimpleNode<T> next = null;
+        
+        tail = head;
+        
+        while( current != null) {
+      	  
+      	 next = current.getNext();
+      	 current.setNext(prev);
+      	 prev = current;
+      	  current = next;
+      	  
+        }
+        head = prev;
+      	
+      }
+
 
     /**
      * RETO 4 (avanzado):
@@ -212,13 +214,36 @@ public class SinglyLinkedList<T> {
      * - No usar HashSet, Map, arreglos u otras estructuras auxiliares.
      * - Resolver comparando nodos de forma manual.
      * - Complejidad esperada sin auxiliares: O(n^2).
-     *
-     * @return cantidad de nodos eliminados por duplicados
      */
     public int removeDuplicates() {
-        throw new UnsupportedOperationException(
-                "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList.");
+    	int eliminados = 0;
+    	
+    	SimpleNode<T> current = head;
+    	
+    	while (current != null) {
+    		SimpleNode<T> runner = current;
+    		while(runner.getNext() != null) {
+    			
+    			if (runner.getNext().getValue().equals(current.getValue())){
+    				runner.setNext(runner.getNext().getNext());
+    				eliminados ++;
+    				size --;
+    				
+    			}else {
+    				runner = runner.getNext();
+    			
+    			
+    			}
+
+    		}
+    		current = current.getNext();
+
+    	}
+		return eliminados;
+
+   
     }
+    
 
     @Override
     public String toString() {

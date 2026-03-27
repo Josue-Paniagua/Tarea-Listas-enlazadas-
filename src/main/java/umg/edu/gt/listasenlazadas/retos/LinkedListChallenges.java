@@ -36,9 +36,19 @@ public final class LinkedListChallenges {
         } catch (UnsupportedOperationException ex) {
             System.out.println(ex.getMessage());
         }
+        System.out.println("-------------------------------------------------------");
+
         eventos.reverseInPlace();
 
-        System.out.println("Aqui el resultado de reverseInPlace antes del clean: " + eventos); 
+        System.out.println("Aqui el resultado de reverseInPlace antes del clean: " + eventos);
+        System.out.println("-------------------------------------------------------");
+        
+        System.out.println("Antes: " + eventos);
+        int duplicados = eventos.removeDuplicates();
+
+        System.out.println("Elimandos"+ duplicados);
+        System.out.println("Dpues de proceso "+ eventos );
+        System.out.println("-------------------------------------------------------");
 
         int eliminados = eventos.clean();
 
