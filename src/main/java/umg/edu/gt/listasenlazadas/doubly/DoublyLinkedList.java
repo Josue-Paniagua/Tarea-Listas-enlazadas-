@@ -149,7 +149,12 @@ public class DoublyLinkedList <T> {
 	    		DoublyNode<T> buscador = current;
 	    		while (buscador.getNext() != null) {
 	    			if (buscador.getNext().getValue().equals(current.getValue())) {
+	    				DoublyNode<T> nodoAEliminar = buscador.getNext();
 	    			buscador.setNext(buscador.getNext().getNext());
+	    			buscador.setNext(nodoAEliminar.getNext());
+	    			 if ( nodoAEliminar.getNext() != null) {
+	    				 nodoAEliminar.getNext().setPrevious(buscador);
+	    			 }
 	    			eliminados ++;
 	    			size --;
 	    	
