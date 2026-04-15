@@ -143,9 +143,27 @@ public class DoublyLinkedList <T> {
 	     * @return cantidad de nodos eliminados
 	     */
 	    public int removeDuplicates() {
-	        throw new UnsupportedOperationException(
-	                "TODO RETO: Implementar removeDuplicates() en DoublyLinkedList.");
+	    	int eliminados = 0;
+	    	DoublyNode<T> current = head;
+	    	while (current != null) {
+	    		DoublyNode<T> buscador = current;
+	    		while (buscador.getNext() != null) {
+	    			if (buscador.getNext().getValue().equals(current.getValue())) {
+	    			buscador.setNext(buscador.getNext().getNext());
+	    			eliminados ++;
+	    			size --;
+	    	
+	    		}else {
+	    			buscador = buscador.getNext();
+	    		
+	    		}
+	    			
+	    	}
+	    	current = current.getNext();
 	    }
+	    return eliminados; 
+}
+
 
 	    public String toForwardString() {
 	        StringBuilder builder = new StringBuilder("[");
