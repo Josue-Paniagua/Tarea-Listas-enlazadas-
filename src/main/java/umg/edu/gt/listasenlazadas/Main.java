@@ -1,6 +1,8 @@
 package umg.edu.gt.listasenlazadas;
 
 import umg.edu.gt.listasenlazadas.applications.TaskBacklogApp;
+import umg.edu.gt.listasenlazadas.doubly.DoublyLinkedList;
+import umg.edu.gt.listasenlazadas.retos.DoublyLinkedListChallenges;
 import umg.edu.gt.listasenlazadas.retos.LinkedListChallenges;
 import umg.edu.gt.listasenlazadas.simple.SimpleListExample;
 
@@ -25,5 +27,6 @@ public class Main {
 //        UndoRedoEditorApp.run();
       
         LinkedListChallenges.run();
+        DoublyLinkedListChallenges.run();
     }
 }

@@ -132,8 +132,23 @@ public class DoublyLinkedList <T> {
 	     * Invierte la lista in-place, actualizando enlaces next/previous.
 	     */
 	    public void reverseInPlace() {
-	        throw new UnsupportedOperationException(
-	                "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList.");
+	    	DoublyNode<T> prev = null;
+	    	DoublyNode<T> next = null;
+	    	DoublyNode<T> current = head;
+	    	
+	    	tail = head;
+	    	while(current != null) {
+	    		
+	    		next = current.getNext();
+	    		current.setNext(prev);
+	    		current.setPrevious(next);
+	    		prev = current;
+	    		current = next;
+	    		
+	    	}
+	    	head = prev;
+
+
 	    }
 
 	    /**
@@ -150,7 +165,6 @@ public class DoublyLinkedList <T> {
 	    		while (buscador.getNext() != null) {
 	    			if (buscador.getNext().getValue().equals(current.getValue())) {
 	    				DoublyNode<T> nodoAEliminar = buscador.getNext();
-	    			buscador.setNext(buscador.getNext().getNext());
 	    			buscador.setNext(nodoAEliminar.getNext());
 	    			 if ( nodoAEliminar.getNext() != null) {
 	    				 nodoAEliminar.getNext().setPrevious(buscador);
@@ -206,5 +220,10 @@ public class DoublyLinkedList <T> {
 	    private boolean isSameValue(T left, T right) {
 	        return left == right || (left != null && left.equals(right));
 	    }
+
+		public static void run() {
+			// TODO Auto-generated method stub
+			
+		}
 
 }
